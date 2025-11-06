@@ -1,6 +1,16 @@
 spring:
   application:
     name: componente-b
+  datasource:
+    url: jdbc:postgresql://localhost:5432/componentebdb
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
 server:
   port: 8082

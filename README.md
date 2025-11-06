@@ -23,16 +23,18 @@ Examen/
 
 ### Componente A - API de Gestión (Puerto: 8081)
 - **Tipo**: API REST con Spring Boot
+- **Base de Datos**: MariaDB
 - **Función**: Gestión de clientes y proveedores
 - **Características**:
   - CRUD completo de Clientes
   - CRUD completo de Proveedores
   - Validación de existencia de entidades
-  - Base de datos H2 en memoria
+  - Persistencia en MariaDB
   - Documentación OpenAPI 3 / Swagger
 
 ### Componente B - API de Logística (Puerto: 8082)
 - **Tipo**: API REST con Spring Boot
+- **Base de Datos**: PostgreSQL
 - **Función**: Orquestador de servicios de logística
 - **Características**:
   - Usa Componente C como dependencia Maven
@@ -40,6 +42,7 @@ Examen/
   - Cálculo de totales de productos
   - Generación de códigos únicos
   - Validación remota de clientes/proveedores
+  - Persistencia en PostgreSQL
   - Flujo circular de integración
   - Documentación OpenAPI 3 / Swagger
 
@@ -60,6 +63,18 @@ Examen/
 ```
 
 ## 🚀 Orden de Ejecución
+
+### 0. Preparar Bases de Datos
+
+#### MariaDB (Componente A)
+```sql
+CREATE DATABASE componenteadb;
+```
+
+#### PostgreSQL (Componente B)
+```sql
+CREATE DATABASE componentebdb;
+```
 
 ### 1. Compilar e Instalar Componente C
 
@@ -140,8 +155,9 @@ Respuesta: Resultado de la invocación circular donde Componente C llama de vuel
 - **Java 17**
 - **Spring Boot 3.2.0**
 - **Spring Cloud OpenFeign** (para consumo de APIs)
-- **Spring Data JPA** (Componente A)
-- **H2 Database** (Componente A)
+- **Spring Data JPA** (persistencia)
+- **MariaDB** (Base de datos Componente A)
+- **PostgreSQL** (Base de datos Componente B)
 - **SpringDoc OpenAPI 3** (Swagger UI)
 - **Lombok** (reducir boilerplate)
 - **Maven** (gestión de dependencias)

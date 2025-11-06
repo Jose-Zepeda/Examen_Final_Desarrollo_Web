@@ -16,6 +16,8 @@ API REST que integra servicios de logística usando el Componente C y consume el
 - Java 17
 - Spring Boot 3.2.0
 - Spring Cloud OpenFeign
+- Spring Data JPA
+- PostgreSQL Database
 - SpringDoc OpenAPI 3
 - Lombok
 - Maven
@@ -25,12 +27,24 @@ API REST que integra servicios de logística usando el Componente C y consume el
 
 - JDK 17 o superior
 - Maven 3.6 o superior
+- PostgreSQL 13 o superior en ejecución
 - **Componente C compilado e instalado** en el repositorio local Maven
 - **Componente A en ejecución** en http://localhost:8081
 
 ## 🔧 Instalación y Ejecución
 
-### 1. Instalar Componente C en Maven local
+### 1. Configurar PostgreSQL
+
+```sql
+-- Crear la base de datos
+CREATE DATABASE componentebdb;
+
+-- Opcional: Crear usuario específico
+CREATE USER componenteb WITH PASSWORD 'componenteb';
+GRANT ALL PRIVILEGES ON DATABASE componentebdb TO componenteb;
+```
+
+### 2. Instalar Componente C en Maven local
 
 Primero, navega al directorio del Componente C e instálalo:
 
@@ -46,7 +60,7 @@ cd ..\Componente_B
 mvn clean install
 ```
 
-### 3. Ejecutar la aplicación
+### 4. Ejecutar la aplicación
 
 ```powershell
 mvn spring-boot:run

@@ -16,7 +16,7 @@ API REST para gestión de clientes y proveedores desarrollada con Spring Boot.
 - Java 17
 - Spring Boot 3.2.0
 - Spring Data JPA
-- H2 Database
+- MariaDB Database
 - SpringDoc OpenAPI 3
 - Lombok
 - Maven
@@ -25,16 +25,29 @@ API REST para gestión de clientes y proveedores desarrollada con Spring Boot.
 
 - JDK 17 o superior
 - Maven 3.6 o superior
+- MariaDB 10.6 o superior en ejecución
 
 ## 🔧 Instalación y Ejecución
 
-### 1. Compilar el proyecto
+### 1. Configurar MariaDB
+
+```sql
+-- Crear la base de datos
+CREATE DATABASE componenteadb;
+
+-- Opcional: Crear usuario específico
+CREATE USER 'componentea'@'localhost' IDENTIFIED BY 'componentea';
+GRANT ALL PRIVILEGES ON componenteadb.* TO 'componentea'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+### 2. Compilar el proyecto
 
 ```powershell
 mvn clean install
 ```
 
-### 2. Ejecutar la aplicación
+### 3. Ejecutar la aplicación
 
 ```powershell
 mvn spring-boot:run
@@ -49,14 +62,15 @@ Una vez iniciada la aplicación, accede a la documentación Swagger:
 - **Swagger UI**: http://localhost:8081/swagger-ui.html
 - **OpenAPI JSON**: http://localhost:8081/api-docs
 
-## 🗄️ Base de Datos
+## 🗄️ Acceso a la Base de Datos
 
-Accede a la consola H2:
+Puedes conectarte a MariaDB con:
 
-- **URL**: http://localhost:8081/h2-console
-- **JDBC URL**: jdbc:h2:mem:componenteadb
-- **Usuario**: sa
-- **Contraseña**: (vacía)
+- **Host**: localhost
+- **Puerto**: 3306
+- **Database**: componenteadb
+- **Usuario**: root
+- **Contraseña**: root
 
 ## 📡 Endpoints Principales
 
